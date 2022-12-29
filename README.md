@@ -26,6 +26,7 @@ suspatcher.exeを呼び出すかどうか、及びその名前(バグあり、�
 isauto collectnum = 0
 ```
 と指定すると改善する場合があります
+
 ＊windows10では、入力ファイルと同じフォルダにあるiniが適用されるのでご注意ください
 
 # suspatcher.exe(始点削除/始点中継点0幅ツール) 
