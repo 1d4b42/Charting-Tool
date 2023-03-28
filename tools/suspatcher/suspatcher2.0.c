@@ -24,6 +24,8 @@ char output_filename[100];
 int ismessage = 1;
 int islog = 1;
 
+int isdelterm = 0;
+
 const char alphabets[27] = "abcdefghijklmnopqrstuvwxyz";
 int slidenum = 0;
 slidechannel sld[26];
@@ -96,7 +98,8 @@ int main(int argc, char* argv[]) {
 			fprintf(fp, "output filename = %s\n", output_filename);
 			fprintf(fp, "\n[other_settings]\n");
 			fprintf(fp, "ismessage = %d\n", ismessage);
-			fprintf(fp, "forward logs = %d\n", buffer1, buffer2, buffer3, islog);
+			fprintf(fp, "forward logs = %d\n", islog);
+			//fprintf(fp, "isdel term = %d\n", isdelterm);
 		}
 	}
 	else {
@@ -123,6 +126,9 @@ int main(int argc, char* argv[]) {
 
 		fscanf(fp, "%[^\n]%c", buffer1, &buf);
 		sscanf(buffer1, "%[^0-9]%d", buffer2, &islog);
+
+		//fscanf(fp, "%[^\n]%c", buffer1, &buf);
+		//sscanf(buffer1, "%[^0-9]%d", buffer2, &isdelterm);
 
 	}
 	fclose(fp);
@@ -243,16 +249,25 @@ int main(int argc, char* argv[]) {
 							if (modarray[modout].type == 3) {
 
 								//ïsâ¬éãíÜåpì_Ç…Ç∑ÇÈ
-								if (tmp[0] != '3')notes_tmp[2 * i] = '5';
+								notes_tmp[2 * i] = '5';
+
+								/*
+								if (tmp[0] != '3') {
+									notes_tmp[2 * i] = '5';
+								}
+								else if (isdelterm == 1) {
+									notes_tmp[2 * i] = '5';
+								}
+								*/
 							}
 							if (modarray[modout].type == 4) {
 								//0ïùÇ…Ç∑ÇÈ
 								notes_tmp[2 * i + 1] = '0';
 							}
 						}
-						//printf("2\n");
+						
 					}
-					//printf("1\n");
+					
 				}
 
 			}
@@ -279,8 +294,8 @@ int main(int argc, char* argv[]) {
 
 					modnum++;
 
-					//notes_tmp[2 * i] = '0';
-					//notes_tmp[2 * i + 1] = '0';
+					notes_tmp[2 * i] = '0';
+					notes_tmp[2 * i + 1] = '0';
 
 					break;
 				case '4':
